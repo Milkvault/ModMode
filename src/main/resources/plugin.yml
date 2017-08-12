@@ -1,3 +1,6 @@
 name: ModMode
 version: ${project.version}
 main: net.xornick.modmode.ModMode
+commands:
+  mod:
+    description: Toggles mod mode on/off

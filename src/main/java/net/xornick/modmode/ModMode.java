@@ -1,5 +1,6 @@
 package net.xornick.modmode;
 
+import net.xornick.modmode.commands.ModModeCommand;
 import net.xornick.modmode.listeners.IceFreeze;
 import net.xornick.modmode.listeners.TeleportCompass;
 import org.bukkit.entity.Player;
@@ -29,6 +30,7 @@ public final class ModMode extends JavaPlugin {
         playerInventory.clear();
         getServer().getPluginManager().registerEvents(new TeleportCompass(), this);
         getServer().getPluginManager().registerEvents(new IceFreeze(), this);
+        getCommand("mod").setExecutor(new ModModeCommand());
     }
 
     public static ModMode getInstance() {
