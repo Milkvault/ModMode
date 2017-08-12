@@ -1,0 +1,3 @@
+name: ModMode
+version: ${project.version}
+main: net.xornick.modmode.ModMode
