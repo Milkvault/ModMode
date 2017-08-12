@@ -19,20 +19,22 @@ public class TeleportCompass implements Listener {
         Player player = event.getPlayer();
         ItemStack item = event.getItem();
 
-        if (item.getType() == Material.COMPASS) {
-            if (!player.hasPermission("modmode.use")) return;
-            Random random = new Random();
-            ArrayList<Player> players = new ArrayList<>();
-            for (Player online : ModMode.getInstance().getServer().getOnlinePlayers()) {
-                if (online == player) {
-                    return;
+        if (ModMode.getUsers().contains(player.getUniqueId())) {
+            if (item.getType() == Material.COMPASS) {
+                if (!player.hasPermission("modmode.use")) return;
+                Random random = new Random();
+                ArrayList<Player> players = new ArrayList<>();
+                for (Player online : ModMode.getInstance().getServer().getOnlinePlayers()) {
+                    if (online == player) {
+                        return;
+                    }
+                    players.add(online);
                 }
-                players.add(online);
+                int index = random.nextInt(players.size());
+                Player target = (Player) players.get(index);
+                player.teleport(target);
+                player.sendMessage(ChatColor.GREEN + "You have teleported to " + target.getName());
             }
-            int index = random.nextInt(players.size());
-            Player target = (Player) players.get(index);
-            player.teleport(target);
-            player.sendMessage(ChatColor.GREEN + "You have teleported to " + target.getName());
         }
     }
 }
