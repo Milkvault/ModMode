@@ -22,10 +22,6 @@ public final class ModMode extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        load();
-    }
-
-    private void load() {
         playerArmorContents.clear();
         playerInventory.clear();
         getServer().getPluginManager().registerEvents(new TeleportCompass(), this);
